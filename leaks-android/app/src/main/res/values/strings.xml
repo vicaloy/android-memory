@@ -1,0 +1,34 @@
+<resources>
+    <string name="app_name">My Leaks Application</string>
+    <string name="leak_canary_display_activity_label">Leaks Examples Canary</string>
+    <string name="instruction_check_for_leaks">Usando la liberia Leak Canary, apretar boton BACK y esperar unos segundos al Recolector de Basura y al Heap Dump.</string>
+
+    <string name="titulo">Pulsando en cada boton, podemso ejecutar Fugas a través de referencias estáticas y Fugas a través de tareas de larga duración, siempre en un ambiente controlado y con la libreria LeakCanary funcionando.</string>
+
+    <string name="texto_singleton">Fuga de Activity Context con un Singleton</string>
+    <string name="explicacion_singleton">Esta Activity fuga memoria con el Singleton "ImportantSingleton". .\n\nAca tenemos 2 opciones para fixear la fuga de memoria:\n\n1) Pasar al Singleton el contexto de la aplicacion, en lugar del contexto de Activity\n\n 2) En el metodo onDestroy() realizar un unregister()</string>
+
+    <string name="texto_static_view">Fuga de Activity con static view</string>
+    <string name="explicacion_static_view">Esta Activity fuga memoria con una instancia static de un objeto View.\n\n%1$s \n\nPara fixear simplemente eliminar el static, Android Studio ayuda con un tip</string>
+
+    <string name="texto_variable_static">Fuga de Activity con variable static</string>
+    <string name="texto_variable_static_2">Esta Activity fuga memoria por la instancia static que tiene en la clase interna.\n\nPara Fixear, eliminar el modificador static de la instancia a la Inner Class. </string>
+    <string name="explicacion_instancia_static">Esta Activity fuga memoria por la instancia static que tiene. \n\nPara Fixear, en el metodo onDestroy poner la activity en null o usar WeakReference.</string>
+
+    <string name="texto_clase_interna">Variable estática a una instancia de clase interna</string>
+
+    <string name="texto_runnable">Fuga de Activity a través del Runnable Thread de clase interna</string>
+    <string name="explicacion_runnable">Esta Activity crea y lanza una clase interna, que fuga memoria en la instancia Activity.\n\nPara Fixear,matar el thread  en el metodo onDestroy() y tambien hacer el Thread static, asi no queda referencias a la activity contenedora.</string>
+
+    <string name="texto_thread">Fuga por Threads y Activity</string>
+    <string name="explicacion_threads">Esta Activity lanza un Thread pero no lo termina cuando es destruida la Activity.\n\nPara Fixear realizar un interrupt() del Thread en el metodo onDestroy() de la Activity.</string>
+
+    <string name="texto_handler">Fuga de Activity a través del Runnable Handler</string>
+    <string name="explicacion_handler">Esta actividad fuga la memoria de la Activity al Handler y a la clase interna.\n\nPara fixear en el metodo onDestroy eliminar el callback. \n\nTambien, para el Runnable, usar una clase static en vez de una clase interna, ya que la clase static no tiene referencias a la Activity contenedora. </string>
+
+    <string name="texto_asynctask">Fuga de Activity  a través de una clase anonima AsyncTask</string>
+    <string name="explicacion_asynctask">Esta Activity fuga memoria con la instancia Anonima de la AsyncTask. AsyncTask estaba destinado a permitir el uso correcto y fácil del hilo de la interfaz de usuario. Sin embargo, el caso de uso más común fue para integrarse en la interfaz de usuario, y eso causaría fugas de contexto, devoluciones de llamadas perdidas o fallas en los cambios de configuración. También tiene un comportamiento inconsistente en diferentes versiones de la plataforma, se traga las excepciones de doInBackground. </string>
+
+    <string name="texto_clase_anonima">Fuga por referencia a clase anonima</string>
+
+</resources>
